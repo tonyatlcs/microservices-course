@@ -7,7 +7,9 @@ const PostCrteate = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", { title });
+    await axios.post("http://localhost:4000/posts", { title }).catch((err) => {
+      console.log("port 3000", err.message);
+    });
 
     setTitle("");
   };
