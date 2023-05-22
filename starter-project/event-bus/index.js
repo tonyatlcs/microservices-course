@@ -13,22 +13,24 @@ app.post("/events", (req, res) => {
   events.push(event);
 
   // Endpoint for posts microservice
-  axios.post("http://localhost:4000/events", event).catch((err) => {
-    console.log("port 4000", err.message);
-  });
+  axios
+    .post("http://posts-clusterip-service:4000/events", event)
+    .catch((err) => {
+      console.log("port 4000", err.message);
+    });
 
   //Comments
-  axios.post("http://localhost:4001/events", event).catch((err) => {
+  axios.post("http://comments-service:4001/events", event).catch((err) => {
     console.log("port 4001", err.message);
   });
 
   //query
-  axios.post("http://localhost:4002/events", event).catch((err) => {
+  axios.post("http://query-service:4002/events", event).catch((err) => {
     console.log("Port 4002", err.message);
   });
 
   //moderation
-  axios.post("http://localhost:4003/events", event).catch((err) => {
+  axios.post("http://moderation-service:4003/events", event).catch((err) => {
     console.log("Port 4003", err.message);
   });
 

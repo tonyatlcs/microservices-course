@@ -1,0 +1,23 @@
+# K8s is extensible, we can add in our own custom objects. This specifies the set of objects we want k8s to look at
+apiVersion: v1
+
+# The specific type of object that we want to create
+kind: Pod
+
+# The config options for the object we are about to create
+metadata:
+
+  # When the pod is created, give it a name of "posts"
+  name: posts
+
+# The exact attributes we want to apply to the object we are about to create
+spec:
+
+  # We can create many containers in a siungle pod
+  containers:
+    # Make a container with name of 'posts'
+    # '-' = array in yaml syntax
+    - name: posts
+
+      # The exact docker image we want to use
+      image: tony/posts:0.0.1
